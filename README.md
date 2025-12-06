@@ -91,6 +91,7 @@ To access a K8s service from the host machine, we can use port forwarding:
 kubectl port-forward svc/my-nginx 8080:80
 ```
 Port 80 is the port we've specified on service creation, and port 8080 is the one we'll use to access our service from the host machine.  
+
 And now we can access our Nginx service from our web browser at http://localhost:8080/
 
 15/20
