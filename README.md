@@ -55,11 +55,17 @@ Pods are ephemeral, they can die and be replaced.
 ## Deployments
 
 A deployment is a collection of pods.  
-It's a way to declare the "desired state" to K8s
+It's a way to declare the "desired state" to K8s, for example:
+```fish
+kubectl create deployment my-nginx --image=nginx --replicas=3
+kubectl get deployments.apps
+kubectl get pods
+kubectl delete deployments.apps my-nginx
+```
 
-...
-
+And if we delete only one of the pods, we can see how fast K8s creates a new one to replace it:  
 <img width="700" height="320" alt="image" src="https://github.com/user-attachments/assets/5d1c280d-5656-47ac-9294-dd59a8ba3bb1" />
 
+That's because K8s' job is to make sure the current state of our cluster always matches the desired state.
 
-8/20
+10/20
