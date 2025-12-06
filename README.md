@@ -68,4 +68,29 @@ And if we delete only one of the pods, we can see how fast K8s creates a new one
 
 That's because K8s' job is to make sure the current state of our cluster always matches the desired state.
 
-10/20
+# Networking
+
+When K8s creates a new replacement pod, it doesn't get the same IP address as the replaced one.  
+So, how can we make sure our pods are always able to talk to each other, and to talk with the outside world?  
+
+## Introduction to K8s Services
+
+A service is responsible for routing incoming traffic to the different pods in our cluster.  
+
+This service is called **ClusterIP**, and its role is to provide internal service discovery and load balancing for pods, abstracting away ephemeral pod IPs so clients connect to a consistent endpoint.  
+
+In other words, the ClusterIP service exposes an application running on Pods via a stable, internal virtual IP address accessible only within the cluster, enabling load-balanced communication to matching backend pods.  
+
+To return to our Ningx example: 
+<img width="678" height="224" alt="image" src="https://github.com/user-attachments/assets/2b3c30fd-bff7-449d-8543-a3588550d1c3" />
+
+## Port forwarding
+
+To access a K8s service from the host machine, we can use port forwarding: 
+```fish
+kubectl port-forward svc/my-nginx 8080:80
+```
+Port 80 is the port we've specified on service creation, and port 8080 is the one we'll use to access our service from the host machine.  
+And now we can access our Nginx service from our web browser at http://localhost:8080/
+
+15/20
