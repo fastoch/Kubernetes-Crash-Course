@@ -16,8 +16,21 @@ Kubernetes is what we call a "container orchestrator", it orchestrates the deplo
 
 # Getting started with Kubernetes
 
-The best way to learn Kubernetes is by installing and playing with Rancher Desktop.  
-When you install Rancher Desktop, you'll also get **kubectl**, which is the CLI for Kubernetes.
+The best way to learn Kubernetes is by installing and playing with **Rancher Desktop**.  
+When you install Rancher Desktop, you'll also get **kubectl**, which is the CLI for Kubernetes.  
+
+If you run `kubectl get nodes`, it will show all nodes in the current Kubernetes cluster.  
+
+Since we'll be using kubectl commands a lot, we should simplify things by adding a **shorthand** in our shell config file.  
+In my case, I use fish (friendly interactive shell), so I need to add the following to ~/.config/fish/config.fish:
+```fish
+# Add kubectl k alias
+abbr k kubectl
+```
+Then, save the file and reload the shell via `source ~/.config/fish/config.fish`  
+
+>[!note]
+>The `abbr` command in Fish creates an abbreviation that expands when you press space, which is more ergonomic than a plain alias.
 
 ...
 
