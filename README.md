@@ -81,7 +81,7 @@ This service is called **ClusterIP**, and its role is to provide internal servic
 
 In other words, the ClusterIP service exposes an application running on Pods via a stable, internal virtual IP address accessible only within the cluster, enabling load-balanced communication to matching backend pods.  
 
-To return to our Ningx example: 
+To return to our Ningx example:  
 <img width="678" height="224" alt="image" src="https://github.com/user-attachments/assets/2b3c30fd-bff7-449d-8543-a3588550d1c3" />
 
 ## Port forwarding
