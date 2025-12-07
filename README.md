@@ -78,7 +78,6 @@ So, how can we make sure our pods are always able to talk to each other, and to 
 A service is responsible for routing incoming traffic to the different pods in our cluster.  
 
 This service is called **ClusterIP**, and its role is to provide internal service discovery and load balancing for pods, abstracting away ephemeral pod IPs so clients connect to a consistent endpoint.  
-
 In other words, the ClusterIP service exposes an application running on Pods via a stable, internal virtual IP address accessible only within the cluster, enabling load-balanced communication to matching backend pods.  
 
 To return to our Ningx example:  
@@ -94,4 +93,15 @@ Port 80 is the port we've specified on service creation, and port 8080 is the on
 
 And now we can access our Nginx service from our web browser at http://localhost:8080/
 
-15/20
+# Scaling
+
+Now we have 3 pods running in our Nginx deployment, which makes it highly-available.  
+But what if our traffic increases? What if we have millions of people visiting our website?  
+
+Then, we can scale our deployment with the following cmd:
+```fish
+kubectl scale deployment my-nginx --replicas=10
+kubectl get pods
+```
+
+And now, our ClusterIP service is load balancing the traffic across our 10-pod deployment.
