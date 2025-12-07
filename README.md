@@ -105,3 +105,21 @@ kubectl get pods
 ```
 
 And now, our ClusterIP service is load balancing the traffic across our 10-pod deployment.
+
+# Home Lab vs Real Life
+
+All of the above is just an introduction to Kubernetes.  
+In real life, these things are handled with KEDA = Kubernetes Event-Driven Auto-scaling.  
+And you wouldn't be deploying pods by running simple CLI commands, you would be doing **GitOps**.  
+
+# Cleaning things up
+
+We need to delete our service and our deployment:
+```fish
+kubectl get svc
+kubectl delete svc my-nginx
+kubectl get deployments.apps
+kubectl delete deployments.apps my-nginx
+kubectl get pods
+```
+Deleting the pods would be useless as our deployment would keep re-creating them endlessly...
